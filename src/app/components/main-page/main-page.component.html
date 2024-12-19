@@ -1,0 +1,114 @@
+<div class="weather-container">
+	<div class="card-container">
+		<div class="weather-card" 
+			 *ngFor="let town of townWeatherList; let i = index"
+			 #weatherCard
+			 [class.hidden]="i !== currentCardIndex"
+			 (mousedown)="onMouseDown($event, i)" 
+      		 (touchstart)="onMouseDown($event, i)">
+			<div class="toolbar">
+				<a routerLink="/search">
+					<img src="/assets/icons/icon-plus.svg">
+				</a>
+				<div class="title">
+					<span class="town">{{ town?.name }}</span>
+					<div class="points">
+						<span class="point" 
+						[ngClass]="town?.name === name ? 'active' : ''" 
+						*ngFor="let name of trackedTownList"></span>
+					</div>
+				</div>
+				<a routerLink="/settings">
+					<img src="/assets/icons/icon-burger.svg">
+				</a>
+			</div>
+			<div class="current-weather">
+				<div class="main">
+					<div class="icon">
+						<img [src]="town?.weatherIcon" class="icon-current-weather" alt="Weather icon"/>
+					</div>
+					<div class="data">
+						<div class="date">
+							<span class="value">{{ date | date: 'EEEE':'':'en-US' }}</span>
+							<span class="value">{{ date | date: 'MMM d':'':'en-US' }}</span>
+						</div>
+						<span class="temperature">
+							<div class="value">
+								{{ town?.temperature | number:'1.0-0' }}
+								<div class="point"></div>
+							</div>
+							<span class="description">{{ town?.weatherDescription }}</span>
+						</span>
+					</div>
+				</div>
+				<div class="details">
+					<div class="detail">
+						<div class="icon">
+							<img src="/assets/icons/icon-wind.svg" alt="wind">
+						</div>
+						<div class="value">
+							{{ (town?.windSpeed | number:'1.0-1') + ' ' + settings.windUnit }}
+							<div class="title">Wind</div>
+						</div>
+					</div>
+					<div class="detail">
+						<div class="icon">
+							<img src="/assets/icons/icon-cloud.svg" alt="cloud">
+						</div>
+						<div class="value">
+							74%
+							<div class="title">Chance of rain</div>
+						</div>
+					</div>
+					<div class="detail">
+						<div class="icon">
+							<img src="/assets/icons/icon-pressure.svg" alt="pressure">
+						</div>
+						<div class="value">
+							{{ (town?.pressureValue | number:'1.0-1') + ' ' + settings.pressureUnit }}
+							<div class="title">Pressure</div>
+						</div>
+					</div>
+					<div class="detail">
+						<div class="icon">
+							<img src="/assets/icons/icon-humidity.svg" alt="humidity">
+						</div>
+						<div class="value">
+							83%
+							<div class="title">Humidity</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="weather-five-hours">
+		<div class="date">
+			<span class="value">{{ date | date: 'EEEE':'':'en-US' }}</span>
+			<span class="value">{{ date | date: 'MMM d':'':'en-US' }}</span>
+		</div>
+		<div class="hours">
+			<div class="card" *ngFor="let forecast of currentTown?.forecastDetailsList">
+				<span class="time">{{ forecast.date | date : "shortTime" }}</span>
+				<img [src]="forecast.weatherIcon" class="icon-forecast" alt="icon" />
+				<span class="temperature">{{ (forecast.temperature | number:'1.0-0')  + '°/' + (forecast.feelsLikeTemperature | number:'1.0-0') + '°' }}</span>
+				<span class="wind">
+					<img src="/assets/icons/icon-wind.svg" alt="wind">
+					{{ forecast.windSpeed }}  m/s
+				</span>
+			</div>
+		</div>
+	</div>
+	<a class="link-mobile">
+		<span>Forecasts for 7 Days</span>
+		<img src="/assets/icons/icon-arrow-down.svg" alt="">
+	</a>
+	<div class="weather-week">
+		<div class="title">Forecasts for 7 Days</div>
+		<div class="row" *ngFor="let day of weeklyForecast">
+			<div class="name">{{ day.date | date: 'EEEE':'':'en-US' }}</div>
+			<div class="weather">{{ day.weather }}</div>
+			<div class="temperatures">{{ (day.tempMin | number: "1.0-0")  + '°/' + (day.tempMax | number: "1.0-0" )+ '°' }}</div>
+		</div>
+	</div>
+</div>

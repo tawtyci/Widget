@@ -1,0 +1,30 @@
+<div class="search-container">
+	<div class="toolbar">
+		<a class="back" routerLink="/">
+			<img src="/assets/icons/icon-back.svg" alt="back">
+		</a>
+		<span class="title">Manage location</span>
+		<span class="back"></span>
+	</div>
+	<div class="search-block">
+		<div class="search">
+			<img src="/assets/icons/icon-search.svg" class="icon-search" alt="search">
+			<input type="text" 
+				   class="search-input" 
+				   placeholder="Search your city"
+				   (input)="onSearch($event)">
+		</div>
+		<div class="results">
+			<div class="result" *ngFor="let town of townList" (click)="trackTown(town.name)">
+				<div class="info">
+					<div class="name">{{ town.name }}</div>
+					<div class="temperature">{{ (town.weather.temp | number:'1.0-0')  + '°/' + (town.weather.feelsLike | number:'1.0-0') + '°' }}</div>
+				</div>
+				<div class="description">
+					<img [src]="town.weather.icon" class="icon">
+					<div class="title">{{ town.weather.description }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

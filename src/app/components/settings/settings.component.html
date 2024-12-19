@@ -1,0 +1,63 @@
+<div class="settings-container">
+	<div class="toolbar">
+		<a class="back" routerLink="/">
+			<img src="/assets/icons/icon-back.svg" alt="back">
+		</a>
+		<span class="title">Settings</span>
+		<span class="back"></span>
+	</div>
+	<div class="settings">
+		<div class="title">UNIT</div>
+		<div class="row">
+			<div class="label">Temperature unit</div>
+			<div class="value" (click)="toggleDropdown(0)">{{ settings.temperatureUnit === 'metric' ? '°C' : '°F' }}</div>
+			<div class="dropdown" 
+				 *ngIf="activeDropdown === 0" 
+				 appClickOutside 
+				 (clickOutside)="toggleDropdown(0)">
+				<div *ngFor="let unit of temperatureUnits"
+					 class="dropdown-item"
+					 (click)="updateSetting('temperatureUnit', unit, 0)">
+					{{ unit === 'metric' ? '°C' : '°F' }}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="label">Wind speed unit</div>
+			<div class="value" (click)="toggleDropdown(1)">{{ settings.windUnit }}</div>
+			<div class="dropdown" 
+				 *ngIf="activeDropdown === 1"
+				  appClickOutside 
+				  (clickOutside)="toggleDropdown(1)">
+				<div *ngFor="let unit of windUnits"
+					 class="dropdown-item"
+					 (click)="updateSetting('windUnit', unit, 1)">
+					{{ unit }}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="label">Atmospheric pressure unit</div>
+			<div class="value" (click)="toggleDropdown(2)">{{ settings.pressureUnit  }}</div>
+			<div class="dropdown" 
+				 *ngIf="activeDropdown === 2"
+				 appClickOutside 
+				 (clickOutside)="toggleDropdown(2)">
+				<div *ngFor="let unit of pressureUnits"
+					class="dropdown-item"
+					(click)="updateSetting('pressureUnit', unit, 2)">
+					{{ unit }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="extra">
+		<div class="title">EXTRA</div>
+		<div class="row">
+			<div class="label">About</div>
+		</div>
+		<div class="row">
+			<div class="label">Privacy policy</div>
+		</div>
+	</div>
+</div>

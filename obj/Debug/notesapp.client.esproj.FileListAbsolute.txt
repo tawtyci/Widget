@@ -1,0 +1,2 @@
+D:\NodeApp\NotesApp\notesapp.client\obj\Debug\notesapp.client.esproj.CoreCompileInputs.cache
+C:\Projects\NotesApp-main\NotesApp\notesapp.client\obj\Debug\notesapp.client.esproj.CoreCompileInputs.cache

@@ -1,0 +1,98 @@
+.settings-container {
+	background: linear-gradient(to bottom, #62B8F6, #2C79C1);
+	color: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	padding: 16px;
+
+	.toolbar {
+		display: flex;
+		flex-wrap: nowrap;
+		height: 32px;
+		justify-content: space-between;
+		align-items: center;
+	
+		.back {
+			width: 32px;
+			height: 32px;
+		}
+	
+		.title {
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 20px;
+		}
+	}
+
+	.settings {
+		.title {
+			font-weight: 500;
+			line-height: 20px;
+			margin-top: 30px;
+			margin-bottom: 16px;
+		}
+	
+		.row {
+			display: flex;
+			justify-content: space-between;
+			min-height: 32px;
+			position: relative;
+			width: 100%;
+	
+			.label {
+				font-size: 16px;
+				line-height: 20px;
+			}
+	
+			.value {
+				color: #E0E0E0;
+				font-size: 14px;
+				line-height: 20px;
+				cursor: pointer;
+			}
+	
+			.dropdown {
+				color: #1B2541;
+				background-color: #FFFFFF;
+				border-radius: 16px;
+				top: 100%;
+				right: 0;
+				padding: 8px 16px;
+				position: absolute;
+				width: 152px;
+				z-index: 10;
+	
+				.dropdown-item {
+					align-items: center;
+					display: flex;
+					justify-content: flex-start;
+					min-height: 32px;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.extra {
+		.title {
+			font-weight: 500;
+			line-height: 20px;
+			margin-top: 30px;
+			margin-bottom: 16px;
+		}
+	
+		.row {
+			display: flex;
+			justify-content: flex-start;
+			min-height: 32px;
+			position: relative;
+			width: 100%;
+	
+			.label {
+				font-size: 16px;
+				line-height: 20px;
+			}
+		}
+	}
+}
